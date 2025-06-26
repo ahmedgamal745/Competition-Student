@@ -1,0 +1,14 @@
+{
+  "registrations": [
+    {
+      "id": "641a",
+      "fullName": "ahmed omar",
+      "email": "aomar@gmail.com",
+      "college": "alexandria",
+      "department": "computer-science",
+      "year": "2",
+      "phone": "1227641503",
+      "role": "student"
+    }
+  ]
+}

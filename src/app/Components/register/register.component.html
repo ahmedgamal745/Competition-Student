@@ -2,20 +2,20 @@
     <h1>Create Your Account</h1>
     <p class="subtitle">Join CompGame to participate in exciting competitions</p>
 
-    <form>
+    <form [formGroup]="registerFrom" (ngSubmit)="onSubmit()">
         <div class="name-fields">
             <div class="form-group">
-                <label for="firstName">First Name</label>
+                <label for="firstName">Full Name </label>
                 <div class="divider">
                 <i class="ic fa fa-user input-icon"></i>
-                <input type="text" id="firstName" placeholder="Enter your first name" required>
+                <input formControlName="firstName" type="text" id="firstName" placeholder="Enter your first name" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="lastName">Last Name</label>
                 <div class="divider">
                 <i class="ic fa fa-user input-icon"></i>
-                <input type="text" id="lastName" placeholder="Enter your last name" required>
+                <input formControlName="lastName" type="text" id="lastName" placeholder="Enter your last name" required>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <label for="email">Email Address</label>
             <div class="divider">
             <i class="ic fa fa-envelope input-icon"></i>
-            <input type="email" id="email" placeholder="Enter your email" required>
+            <input formControlName="email" type="email" id="email" placeholder="Enter your email" required>
             </div>
         </div>
 
@@ -32,7 +32,7 @@
             <label for="college">College/University</label>
             <div class="divider">
             <i class="ic fa fa-university input-icon"></i>
-            <input type="text" id="college" placeholder="Enter your college name" required>
+            <input type="text"  formControlName="college" id="college" placeholder="Enter your college name" required>
             </div>
         </div>
 
@@ -40,8 +40,8 @@
             <label for="department">Department</label>
             <div class="divider">
             <i class="ic fa fa-graduation-cap input-icon"></i>
-            <select id="department" required>
-                <option value="" disabled selected>Select department</option>
+            <select formControlName="department" id="department" required>
+                <option value="" disabled>Select department</option>
                 <option value="computer-science">Computer Science</option>
                 <option value="engineering">Engineering</option>
                 <option value="business">Business</option>
@@ -55,8 +55,8 @@
             <label for="year">Year of Study</label>
             <div class="divider">
             <i class="ic fa fa-calendar input-icon"></i>
-            <select id="year" required>
-                <option value="" disabled selected>Select year</option>
+            <select formControlName="year" id="year" required>
+                <option value="" disabled>Select year</option>
                 <option value="1">First Year</option>
                 <option value="2">Second Year</option>
                 <option value="3">Third Year</option>
@@ -70,7 +70,7 @@
             <label for="phone">Phone Number</label>
             <div class="divider">
             <i class="ic fa fa-phone input-icon"></i>
-            <input type="tel" id="phone" placeholder="Enter your phone number" required>
+            <input formControlName="phone"  type="tel" id="phone" placeholder="Enter your phone number" required>
             </div>
         </div>
 
@@ -79,7 +79,7 @@
             <label for="password">Password</label>
             <div class="divider">
             <i class="ic fa fa-lock input-icon"></i>
-            <input type="password" id="password" placeholder="Create a password" required>
+            <input formControlName="password" type="password" id="password" placeholder="Create a password" required>
             <i class="pass-ic fa fa-eye input-icon"></i>
             </div>
             <p class="password-hint">Password must be at least 8 characters with letters and numbers</p>
@@ -89,18 +89,18 @@
             <label for="confirmPassword">Confirm Password</label>
             <div class="divider">
             <i class="ic fa fa-lock input-icon"></i>
-            <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+            <input formControlName="confirmPassword" type="password" id="confirmPassword" placeholder="Confirm your password" required>
             <i class="pass-ic fa fa-eye input-icon"></i>
             </div>
         </div>
        </div>
 
         <div class="checkbox-group">
-            <input type="checkbox" id="terms" required>
+            <input formControlName="terms" type="checkbox" id="terms" required>
             <label for="terms">I agree to the Terms of Service and Privacy Policy</label>
         </div>
 
-        <button type="submit" class="btn">Create Account</button>
+        <button type="submit" [disabled]="registerFrom.invalid" class="btn">Create Account</button>
 
         <p class="login-link">Already have an account? <a href="#">Sign In</a></p>
     </form>
