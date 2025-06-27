@@ -1,0 +1,112 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f7f7f7;
+}
+
+.login-box {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.avatar .icon {
+  font-size: 48px;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-weight: 600;
+  margin: 0;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+input{
+     width: 100%;
+    padding: 12px 15px 12px 40px; /* Make room for icon */
+    border: 1px solid #ddd;
+    border-bottom-right-radius: 5px ;
+    border-top-right-radius: 5px ;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+.label-space {
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* Prevent line break */
+  gap: 6px; /* Space between checkbox and text */
+}
+
+.input-icon.password i:last-child {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.btn-login {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+.ic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    width: 35px;
+    height: 49px;
+    /* border-left: 5px solid #ddd; */
+    border-top-left-radius: 5px;
+    border-right: 1px solid #bbb8b8;
+}
+.pass-ic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    width: 35px;
+    height: 49px;
+    /* border-left: 5px solid #ddd; */
+    border-top-right-radius: 5px;
+    border-left: 1px solid #bbb8b8;
+}
+
+
+.register-link {
+  margin-top: 15px;
+  font-size: 13px;
+}
