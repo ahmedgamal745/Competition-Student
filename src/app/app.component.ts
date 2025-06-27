@@ -1,4 +1,5 @@
-import { Component, Inject } from '@angular/core';
+// In app.component.ts
+import { Component } from '@angular/core';
 import {Router, RouterLink, RouterOutlet } from '@angular/router';
 import { UserService } from './services/user.service';
 
@@ -10,14 +11,16 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent {
   title = 'Competation-Student';
-  router= Inject(Router);
-  userService = Inject(UserService);
   
-
+  constructor(
+    public router: Router,
+    public userService: UserService // Must be public for template access
+  ) {}
+  
   onlogout() {
-    localStorage.removeItem('studentId');
-    this.userService.loggedUserId = '';
+    this.userService.clearUserData();
     alert("Logout successful");
-     this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/home');
   }
 }
+   

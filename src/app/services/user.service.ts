@@ -7,14 +7,50 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
   private apiUrl = 'https://api.freeprojectapi.com/api/ProjectCompetition/login';
-  loggedUserId: string = '';
+  private userData: {
+    userId: string,
+    fullName: string,
+    email: string,
+    collegeName: string,
+    role: string
+  } = {
+    userId: '',
+    fullName: 'Guest',
+    email: '',
+    collegeName: '',
+    role: ''
+  };
 
   constructor(private http: HttpClient) {
-    const loginData = localStorage.getItem('studentId');
-    if (loginData != null) {
-      this.loggedUserId = loginData;
+    this.loadUserData();
+  }
+
+  private loadUserData(): void {
+    const savedData = localStorage.getItem('userData');
+    if (savedData) {
+      this.userData = JSON.parse(savedData);
     }
   }
+
+  get loggedUserId(): string {
+    return this.userData.userId;
+  }
+
+  get loggedUsername(): string {
+    return this.userData.fullName;
+  }
+
+  // get userEmail(): string {
+  //   return this.userData.email;
+  // }
+
+  // get userCollege(): string {
+  //   return this.userData.collegeName;
+  // }
+
+  // get userRole(): string {
+  //   return this.userData.role;
+  // }
 
   userlogin(email: string, password: string): Observable<any> {
     const body = { email, password };
@@ -23,9 +59,32 @@ export class UserService {
       'Accept': 'application/json'
     });
 
-    // Option 1: Without credentials (recommended first try)
     return this.http.post(this.apiUrl, body, { headers });
-    
-    
-}
+  }
+
+  setUserData(userData: any): void {
+    this.userData = {
+      userId: userData.userId,
+      fullName: userData.fullName,
+      email: userData.email,
+      collegeName: userData.collegeName,
+      role: userData.role
+    };
+    localStorage.setItem('userData', JSON.stringify(this.userData));
+  }
+
+  clearUserData(): void {
+    this.userData = {
+      userId: '',
+      fullName: 'Guest',
+      email: '',
+      collegeName: '',
+      role: ''
+    };
+    localStorage.removeItem('userData');
+  }
+
+  isLoggedIn(): boolean {
+    return !!this.userData.userId;
+  }
 }

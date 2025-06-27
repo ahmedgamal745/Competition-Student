@@ -25,26 +25,29 @@ export class LoginComponent {
     private router: Router
   ) {}
 
-  onSubmit() {
-    if (this.loginForm.invalid) {
-      return;
-    }
-
-    const { email, password } = this.loginForm.value;
-
-    this.userService.userlogin(email, password).subscribe({
-      next: (response: any) => {
-        console.log('Login successful', response);
-        localStorage.setItem("studentId", response.userId);
-        this.router.navigate(['/home']);
-        this.userService.loggedUserId = response.userId; // Update the logged user ID in the service
-      },
-      error: (error: any) => {
-        console.error('Login failed', error);
-        alert("Login failed. Please check your credentials.");
-      }
-    });
+ onSubmit() {
+  if (this.loginForm.invalid) {
+    return;
   }
+
+  const { email, password } = this.loginForm.value;
+
+  this.userService.userlogin(email, password).subscribe({
+    next: (response: any) => {
+      if (response.userId) {
+        this.userService.setUserData(response);
+        this.router.navigate(['/home']);
+      } else {
+        console.error('Login response missing userId', response);
+        alert("Login successful but missing required data. Please contact support.");
+      }
+    },
+    error: (error: any) => {
+      console.error('Login failed', error);
+      alert("Login failed. Please check your credentials.");
+    }
+  });
+}
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
