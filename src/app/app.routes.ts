@@ -6,6 +6,8 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { StudentsComponent } from './Components/students/students.component';
 import { SubmitProjectsComponent } from './Components/submit-projects/submit-projects.component';
 import { ProjectsComponent } from './Components/projects/projects.component';
+import { CompetitionComponent } from './Components/competition/competition.component';
+
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,4 +18,5 @@ export const routes: Routes = [
     {path: 'students', component:StudentsComponent},
     {path: 'submit-projects', component:SubmitProjectsComponent},
     {path: 'projects', component:ProjectsComponent},
+    {path: 'competition', component:CompetitionComponent}
 ];

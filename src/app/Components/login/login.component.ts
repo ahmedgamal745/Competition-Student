@@ -36,6 +36,8 @@ export class LoginComponent {
     next: (response: any) => {
       if (response.userId) {
         this.userService.setUserData(response);
+        localStorage.setItem('userId', response.userId);
+        localStorage.setItem('loggedUser', JSON.stringify(response));
         this.router.navigate(['/home']);
       } else {
         console.error('Login response missing userId', response);

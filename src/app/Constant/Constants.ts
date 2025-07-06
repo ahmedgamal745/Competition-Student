@@ -1,0 +1,1 @@
+export const API_URL = 'https://api.freeprojectapi.com/api/ProjectCompetition/';

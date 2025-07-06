@@ -1,0 +1,101 @@
+ <div class="container py-5">
+    <h2 class="mb-4 text-center">Competition Management</h2>
+    <div class="row g-4">
+      
+     
+      <div class="col-7">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <strong>Competitions List</strong>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="competitionTable">
+                @for(item of compData; track $index) {
+                    <tr>
+                    <td>{{item.competitionId}}</td>
+                    <td>    {{truncateText(item.title,10)}}</td>
+                    <td>{{item.startDate | date:'d-MMM-yy'}}</td>
+                    <td>{{item.endDate | date:'d-MMM-yy'}}</td>
+                    <td>{{item.status}}</td>
+                    <td>
+                        <div class="row g-0 text-center">
+                        <div class="col-5 me-2 ">
+                            <button class="btn btn-sm btn-warning w-100 " >Edit</button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-sm btn-danger w-100">Delete</button>
+                        </div>
+                        </div>
+                    </td>
+                </tr>
+                }
+                
+                
+                <!-- More rows will be dynamically added -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Competition Form -->
+      <div class="col-5">
+        <div class="card">
+          <div class="card-header bg-success text-white">
+            <strong>Add / Edit Competition</strong>
+          </div>
+          <div class="card-body">
+            <form id="competitionForm">
+              <input type="hidden" id="competitionId" value="">
+              
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" [(ngModel)]="newObject.title" name="title" id="title" class="form-control" placeholder="Enter title" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea [(ngModel)]="newObject.description" name="description" id="description" class="form-control" rows="3" placeholder="Enter description"></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label for="startDate" class="form-label">Start Date</label>
+                <input type="date" [(ngModel)]="newObject.startDate" name="startDate" id="startDate" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="endDate" class="form-label">End Date</label>
+                <input type="date" [(ngModel)]="newObject.endDate" name="endDate" id="endDate" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="status" [(ngModel)]="newObject.status" name="status" class="form-label">Status</label>
+                <select id="status" class="form-select" required>
+                  <option value="">Select status</option>
+                  <option value="New">New</option>
+                  <option value="Ongoing">Ongoing</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </div>
+
+              <div class="d-grid">
+                <button type="button" class="btn btn-primary" (click)="SaveData()">Save Competition</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>

@@ -1,0 +1,18 @@
+<section class="featured-competitions">
+    <div class="container">
+        <h2>Featured Competitions</h2>
+        <p class="subtitle">Participate in our ongoing competitions and showcase your talent</p>
+        <div class="competitions-grid">
+             @for (competition of competitions; track competition.title) {
+                <div class="competition-card">
+                    <h3>{{truncateText(competition.title, 15) }}</h3>
+                    <p class="description">{{ truncateText(competition.description || 'No description available' , 25)  }}</p>
+                    <div class="date-info">
+                        <p class="end-date">Ends on: {{ competition.endDate | date:'d-MMM-yy'   }}</p>
+                    </div>
+                    <button class="btn btn-outline">View Details</button>
+                </div>
+            }
+        </div>
+    </div>
+</section>

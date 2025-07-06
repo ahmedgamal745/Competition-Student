@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import * as Constants from '../Constant/Constants';
 
 @Injectable({
   providedIn: 'root'
@@ -59,7 +60,7 @@ export class UserService {
       'Accept': 'application/json'
     });
 
-    return this.http.post(this.apiUrl, body, { headers });
+    return this.http.post(Constants.API_URL +"login", body, { headers });
   }
 
   setUserData(userData: any): void {
