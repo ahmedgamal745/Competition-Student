@@ -18,6 +18,27 @@
         </div>
     </div>
 </section>
+<section class="featured-competitions">
+    <div class="container">
+        <h2>Featured Competitions</h2>
+        <p class="subtitle">Participate in our ongoing competitions and showcase your talent</p>
+        <div class="competitions-grid">
+             @for (competation of CompitionLest().slice(0, 6); track competation.competitionId) {
+                <div class="competition-card">
+                    <h3>{{truncateText(competation.title, 15) }}</h3>
+                    <p class="description">{{ truncateText(competation.description || 'No description available' , 25)  }}</p>
+                    <div class="date-info">
+                        <p class="end-date">Ends on: {{ competation.endDate | date:'d-MMM-yy'   }}</p>
+                    </div>
+                    <a [routerLink]="'/submit-projects/'+competation.competitionId" class="btn btn-outline">View Details</a>
+                </div>
+            }
 
+        </div>
+        <div class="view-all-btn" style="text-align: center; margin-top: 20px;">
+            <a routerLink="/allCompetition" class="btn btn-primary">View All Competitions</a>
+        </div>
+    </div>
+</section>
 <!-- Featured Competitions Section -->
-<app-featured-competitions></app-featured-competitions>
+<!-- <app-featured-competitions></app-featured-competitions> -->

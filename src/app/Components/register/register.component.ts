@@ -63,15 +63,9 @@ export class RegisterComponent {
   console.log('Sending to API:', apiPayload);
 
   this.http.post('https://api.freeprojectapi.com/api/ProjectCompetition/register', apiPayload).subscribe({
-    next: () => {
-      // ✅ Remote registration successful – now save locally
-      this.http.post('http://localhost:3000/registrations', localPayload).subscribe({
-        next: () => alert('Registration successful!'),
-        error: () => alert('Local save failed (json-server)')
-      });
-    },
+    next: () => {alert('Registration successful!');},
     error: (err) => {
-      // ❌ Handle remote API failure
+      
       if (err.status === 409) {
         alert("This email is already registered. Try logging in.");
       } else {
