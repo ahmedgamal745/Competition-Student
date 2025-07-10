@@ -3,16 +3,17 @@
         <h2>Featured Competitions</h2>
         <p class="subtitle">Participate in our ongoing competitions and showcase your talent</p>
         <div class="competitions-grid">
-             @for (competition of competitions; track competition.title) {
+             @for (competation of CompitionLest(); track competation.competitionId) {
                 <div class="competition-card">
-                    <h3>{{truncateText(competition.title, 15) }}</h3>
-                    <p class="description">{{ truncateText(competition.description || 'No description available' , 25)  }}</p>
+                    <h3>{{truncateText(competation.title, 15) }}</h3>
+                    <p class="description">{{ truncateText(competation.description || 'No description available' , 25)  }}</p>
                     <div class="date-info">
-                        <p class="end-date">Ends on: {{ competition.endDate | date:'d-MMM-yy'   }}</p>
+                        <p class="end-date">Ends on: {{ competation.endDate | date:'d-MMM-yy'   }}</p>
                     </div>
-                    <button class="btn btn-outline">View Details</button>
+                    <a [routerLink]="'/submit-projects/'+competation.competitionId" class="btn btn-outline">View Details</a>
                 </div>
             }
+
         </div>
     </div>
 </section>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as Constants from '../Constant/Constants';
-import { CompModel } from '../model/compModel';
+import { CompModel, project } from '../model/compModel';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +17,13 @@ export class CompetitionService {
       }
     });
   }
+
+  getCompetationById(id:number){
+    return this.http.get<CompModel>(Constants.API_URL+"competition/"+id,{headers:{
+      'Content-Type': 'application/json',
+        'Accept': 'application/json' 
+    }})
+  }
   createCompetition(competitionData: CompModel) {
     
     return this.http.post(Constants.API_URL+'competition', competitionData, {
@@ -25,5 +32,12 @@ export class CompetitionService {
         'Accept': 'application/json'
       }
     });
+  }
+
+  createProject(projectData:project){
+    return this.http.post(Constants.API_URL+'project',projectData,{headers:{
+      'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    }})
   }
 }
