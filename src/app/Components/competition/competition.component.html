@@ -21,7 +21,7 @@
                 </tr>
               </thead>
               <tbody id="competitionTable">
-                @for(item of compData; track $index) {
+                @for(item of compData; track item.competitionId) {
                     <tr>
                     <td>{{item.competitionId}}</td>
                     <td>    {{truncateText(item.title,10)}}</td>

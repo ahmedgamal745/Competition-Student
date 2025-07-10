@@ -19,21 +19,7 @@ export class CompetitionComponent implements OnInit {
   newObject:CompModel = new CompModel();
 
   compService = inject(CompetitionService);
-  SaveData(){
-    this.compService.createCompetition(this.newObject).subscribe({
-      next: (response) => {
-        console.log('Competition created successfully:', response);
-        alert('Competition created successfully!');
-        // Optionally, reset the form or redirect
-        this.newObject = new CompModel(); // Reset the form
-      },error: (error) => {
-        console.error('Error creating competition:', error);
-        alert('Failed to create competition. Please try again later.');
-      }
-    })
-
-
-  }
+ 
 
   compData: CompModel[] = [];
 
@@ -56,7 +42,22 @@ export class CompetitionComponent implements OnInit {
       }
     });
   }
+   SaveData(){
+    this.compService.createCompetition(this.newObject).subscribe({
+      next: (response) => {
+        console.log('Competition created successfully:', response);
+        alert('Competition created successfully!');
+        this.getAllCompetitions()
+        // Optionally, reset the form or redirect
+        this.newObject = new CompModel(); // Reset the form
+      },error: (error) => {
+        console.error('Error creating competition:', error);
+        alert('Failed to create competition. Please try again later.');
+      }
+    })
 
+
+  }
   truncateText(text:string, maxLength: number): string {
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
 
